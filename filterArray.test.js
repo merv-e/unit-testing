@@ -1,20 +1,23 @@
 var filterArray = require('./filterArray');
 
+let array = [1, 2, 3, 4];
+let testNull = null;
+let arrayContainsLargerNums = [1, 2, 3, 150];
+
+let results = filterArray(arrayContainsLargerNums);
+let results2 = filterArray(array);
+
 describe('filterArray', ()=> {
     it("if it's null return null ", () => {
-        expect(filterArray(null)).toBeNull(),
-        expect(filterArray([5,6,105])).toEqual([5,6,100])
+        expect(filterArray(testNull)).toBeNull()
     })
-})
 
-describe('filterArray', ()=> {
-    it('find if theres a number in the array, and if there is, filter numbers below 100', () => {
-        expect(filterArray([5,6,85])).toEqual([5,6,85])
+    it('check if the numbers are equal', () => {
+        expect(results2).toEqual(array)
     })
-})
 
-describe('filterArray', ()=> {
-    it('find if theres a number in the array, and if there is, filter numbers below 100', () => {
-        expect(filterArray([5,6,125])).not.toContain(125)
+
+    it("find if there's a  number larger than 100 and make sure the array doesnt contain that number", () => {
+        expect(results).not.toContain(125)
     })
 })
